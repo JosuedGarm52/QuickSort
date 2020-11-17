@@ -44,11 +44,9 @@ namespace OrdenamientoForma
             try
             {
                 int p=0, f=0;
-                Numero = ObtenerDatos();
+                string g = ObtenerDatos();
                 AsignarValoresIniciales(ref p,ref f);
-                
-                quicksort(Numero, p, f);
-                MessageBox.Show(Numero.ToString(), "Datos Ordenados  ");
+                MessageBox.Show(g, "Numeros ordenados");
             }
             catch (Exception ex)
             {
@@ -67,23 +65,30 @@ namespace OrdenamientoForma
                 ultimo = Numero[i];
             }
         }
-        int[] ObtenerDatos()
+        string ObtenerDatos()
         {
             int cant = c * f;
-            int[] numero= new int[cant];
+            Numero= new int[cant];
             int cont = 0;
             for (int fila = 0; fila < Tabla.Rows.Count-1; fila++)
             { 
                 for (int col = 0; col < Tabla.Rows[fila].Cells.Count; col++)
                 {
-                    numero[cont] = int.Parse(Tabla.Rows[fila].Cells[col].Value.ToString());
+                    Numero[cont] = int.Parse(Tabla.Rows[fila].Cells[col].Value.ToString());
                     cont++;
                 }
             }
-            return numero;
+            OrdenamientoRapido(Numero, cant);
+            string g="";
+            for (int i = 0; i < Cant; ++i)
+            {
+                g+= ($"{Numero[i]},");
+            }
+            return g;
         }
-        private void quicksort(int[] vector, int primero, int ultimo)
+        private string quicksort(int[] Vector, int primero, int ultimo)
         {
+            int[] vector = Vector;
             int i, j, central;
             double pivote;
             central = (primero + ultimo) / 2;
@@ -113,8 +118,46 @@ namespace OrdenamientoForma
             {
                 quicksort(vector, i, ultimo);
             }
-            MessageBox.Show($"{vector}");
+            string ordenado="";
+            for (int l = 0; l < vector.Length; l++)
+            {
+                 ordenado += $"{vector[l]}";
+            }
+            return ordenado;
         }
-
+        static int cont;
+        private static int OrdenamientoRapido(int[] datos, int numero)
+        {
+            cont = 0;
+            OrdenamientoRapido(datos, 0, numero - 1);
+            return cont;
+        }
+        public static void OrdenamientoRapido(int[] datos, int inf, int sup)
+        {
+            if (sup > inf)
+            {
+                int pivote = datos[sup];
+                int i = inf - 1;
+                int j = sup;
+                do
+                {
+                    while (datos[++i] < pivote) ;
+                    while (datos[--j] > pivote) ;
+                    if (i < j)
+                        swap(datos, i, j);
+                }
+                while (i < j);
+                swap(datos, i, sup);
+                OrdenamientoRapido(datos, inf, i - 1);
+                OrdenamientoRapido(datos, i + 1, sup);
+            }
+        }
+        public static void swap(int[] datos, int i, int j)
+        {
+            int aux = datos[i];
+            datos[i] = datos[j];
+            datos[j] = aux;
+            cont++; // variable global
+        }
     }
 }
