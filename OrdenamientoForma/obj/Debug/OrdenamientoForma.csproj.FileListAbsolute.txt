@@ -1,0 +1,11 @@
+C:\Users\jacco\source\repos\OrdenamientoForma\bin\Debug\OrdenamientoForma.exe.config
+C:\Users\jacco\source\repos\OrdenamientoForma\bin\Debug\OrdenamientoForma.exe
+C:\Users\jacco\source\repos\OrdenamientoForma\bin\Debug\OrdenamientoForma.pdb
+C:\Users\jacco\source\repos\OrdenamientoForma\obj\Debug\OrdenamientoForma.csprojAssemblyReference.cache
+C:\Users\jacco\source\repos\OrdenamientoForma\obj\Debug\OrdenamientoForma.Form1.resources
+C:\Users\jacco\source\repos\OrdenamientoForma\obj\Debug\OrdenamientoForma.Form2.resources
+C:\Users\jacco\source\repos\OrdenamientoForma\obj\Debug\OrdenamientoForma.Properties.Resources.resources
+C:\Users\jacco\source\repos\OrdenamientoForma\obj\Debug\OrdenamientoForma.csproj.GenerateResource.cache
+C:\Users\jacco\source\repos\OrdenamientoForma\obj\Debug\OrdenamientoForma.csproj.CoreCompileInputs.cache
+C:\Users\jacco\source\repos\OrdenamientoForma\obj\Debug\OrdenamientoForma.exe
+C:\Users\jacco\source\repos\OrdenamientoForma\obj\Debug\OrdenamientoForma.pdb
