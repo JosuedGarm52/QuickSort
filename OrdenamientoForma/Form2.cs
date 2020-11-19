@@ -43,9 +43,11 @@ namespace OrdenamientoForma
         {
             try
             {
-                int p=0, f=0;
+                int cant = c * f;
+                Numero = new int[cant];
+                int p=0, r=0;
                 string g = ObtenerDatos();
-                AsignarValoresIniciales(ref p,ref f);
+                AsignarValoresIniciales(ref p,ref r);
                 MessageBox.Show(g, "Numeros ordenados");
             }
             catch (Exception ex)
@@ -68,7 +70,7 @@ namespace OrdenamientoForma
         string ObtenerDatos()
         {
             int cant = c * f;
-            Numero= new int[cant];
+            //Numero= new int[cant];
             int cont = 0;
             for (int fila = 0; fila < Tabla.Rows.Count-1; fila++)
             { 
@@ -86,45 +88,7 @@ namespace OrdenamientoForma
             }
             return g;
         }
-        private string quicksort(int[] Vector, int primero, int ultimo)
-        {
-            int[] vector = Vector;
-            int i, j, central;
-            double pivote;
-            central = (primero + ultimo) / 2;
-            pivote = vector[central];
-            i = primero;
-            j = ultimo;
-            do
-            {
-                while (vector[i] < pivote) i++;
-                while (vector[j] > pivote) j--;
-                if (i <= j)
-                {
-                    int temp;
-                    temp = vector[i];
-                    vector[i] = vector[j];
-                    vector[j] = temp;
-                    i++;
-                    j--;
-                }
-            } while (i <= j);
-
-            if (primero < j)
-            {
-                quicksort(vector, primero, j);
-            }
-            if (i < ultimo)
-            {
-                quicksort(vector, i, ultimo);
-            }
-            string ordenado="";
-            for (int l = 0; l < vector.Length; l++)
-            {
-                 ordenado += $"{vector[l]}";
-            }
-            return ordenado;
-        }
+        
         static int cont;
         private static int OrdenamientoRapido(int[] datos, int numero)
         {
@@ -152,6 +116,41 @@ namespace OrdenamientoForma
                 OrdenamientoRapido(datos, i + 1, sup);
             }
         }
+
+        private void btnGenerar_Click(object sender, EventArgs e)
+        {
+            int cont = 0;
+            int cant = c * f;
+            Random ram = new Random();
+            Numero = new int[cant];
+            for (int j = 0; j < f; j++)
+            {
+                for (int i = 0; i < c; i++)
+                {
+                    
+                    var Value = ram.Next(0, 20);
+                    Tabla.Rows[j].Cells[i].Value = Value;
+                    Numero[cont] = Value;
+                    cont++;
+                }
+            }
+            try
+            {
+                string g = ObtenerDatos();
+                MessageBox.Show(g, "Numeros ordenados");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex);
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         public static void swap(int[] datos, int i, int j)
         {
             int aux = datos[i];
